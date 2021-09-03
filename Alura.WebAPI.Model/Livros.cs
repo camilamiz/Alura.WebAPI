@@ -15,7 +15,8 @@ namespace Alura.ListaLeitura.Modelos
         public TipoListaLeitura Lista { get; set; }
     }
 
-    [XmlType("Livro")] //usar este nome ao invés do nome da classe LivroApi no retorno do xml
+    //[XmlType("Livro")] 
+    //usar este nome ao invés do nome da classe LivroApi no retorno do xml
     public class LivroApi
     {
         public int Id { get; set; }
