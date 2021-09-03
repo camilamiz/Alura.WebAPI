@@ -48,15 +48,42 @@ namespace Alura.ListaLeitura.WebApp.Controllers
             return File("~/images/capas/capa-vazia.png", "image/png");
         }
 
+        public Livro RecuperaLivro(int id)
+        {
+            return _repo.Find(id);
+        }
+
+        public ActionResult<LivroUpload> DetalhesJson(int id)
+        {
+            var model = RecuperaLivro(id);
+            if (model == null)
+            {
+                return NotFound();
+            }
+
+            return model.ToModel();
+        }
+
         [HttpGet]
         public IActionResult Detalhes(int id)
         {
-            var model = _repo.Find(id);
+            var model = RecuperaLivro(id);
             if (model == null)
             {
                 return NotFound();
             }
             return View(model.ToModel());
+        }
+
+        [HttpGet]
+        public IActionResult DetalhesSemHtml(int id)
+        {
+            var model = RecuperaLivro(id);
+            if (model == null)
+            {
+                return NotFound();
+            }
+            return Json(model.ToModel());
         }
 
         [HttpPost]
