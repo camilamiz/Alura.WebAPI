@@ -49,22 +49,22 @@ namespace Alura.ListaLeitura.WebApp
                 options.OutputFormatters.Add(new LivroCSVFormatter());
             }).AddXmlSerializerFormatters();
 
-            services.AddAuthentication(options => {
-                options.DefaultAuthenticateScheme = "JwtBearer";
-                options.DefaultChallengeScheme = "JwtBearer";
-            }).AddJwtBearer("JwtBearer", options => {
-                options.TokenValidationParameters = new TokenValidationParameters
-                {
-                    ValidateIssuer = true,
-                    ValidateAudience = true,
-                    ValidateLifetime = true,
-                    ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("valid-alura-webapi-authentication")),
-                    ClockSkew = System.TimeSpan.FromMinutes(5),
-                    ValidIssuer = "Alura.WebApp",
-                    ValidAudience = "Insomnia"
-                };
-            });
+            //services.AddAuthentication(options => {
+            //    options.DefaultAuthenticateScheme = "JwtBearer";
+            //    options.DefaultChallengeScheme = "JwtBearer";
+            //}).AddJwtBearer("JwtBearer", options => {
+            //    options.TokenValidationParameters = new TokenValidationParameters
+            //    {
+            //        ValidateIssuer = true,
+            //        ValidateAudience = true,
+            //        ValidateLifetime = true,
+            //        ValidateIssuerSigningKey = true,
+            //        IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("valid-alura-webapi-authentication")),
+            //        ClockSkew = System.TimeSpan.FromMinutes(5),
+            //        ValidIssuer = "Alura.WebApp",
+            //        ValidAudience = "Insomnia"
+            //    };
+            //});
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
