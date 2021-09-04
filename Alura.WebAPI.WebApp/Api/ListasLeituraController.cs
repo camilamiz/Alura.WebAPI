@@ -47,6 +47,15 @@ namespace Alura.WebAPI.WebApp.Api
         [HttpGet("{tipo}")]
         public IActionResult Recuperar(TipoListaLeitura tipo)
         {
+            //um exemplo de como é feita a verificação de autorização a cada requisição
+            //mandamos no header Authorization (key) e 123 (value),
+            //não tem consulta a nenhuma base de dados (como é feito com cookies e session id), sem acoplamento com servidor
+            //var header = this.HttpContext.Request.Headers;
+            //if (!header.ContainsKey("Authorization") || !(header["Authorization"] == "123"))
+            //{
+            //    return StatusCode(401);
+            //}
+
             var lista = CriaLista(tipo);
             return Ok(lista);
         }
